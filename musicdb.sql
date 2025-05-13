@@ -27,3 +27,21 @@ CREATE TABLE IF NOT EXISTS Collection (
 	release_date DATE
 );
 
+CREATE TABLE IF NOT EXISTS Collection_Track (
+	track_id INTEGER REFERENCES Track(track_id),
+	collection_id INTEGER REFERENCES Collection(collection_id),
+	PRIMARY KEY (track_id, collection_id)
+);
+
+CREATE TABLE IF NOT EXISTS Artist_Album (
+	artist_id INTEGER REFERENCES Artist (artist_id),
+	album_id INTEGER REFERENCES Album(album_id),
+	CONSTRAINT pk PRIMARY KEY (artist_id, album_id)
+);
+
+CREATE TABLE IF NOT EXISTS Artist_Genre (
+	artist_id INTEGER REFERENCES Artist(artist_id),
+	genre_id INTEGER REFERENCES Genre(genre_id),
+	PRIMARY KEY (artist_id, genre_id)
+);
+
